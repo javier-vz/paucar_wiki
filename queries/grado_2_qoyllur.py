@@ -52,7 +52,7 @@ WHERE {
   FILTER(STRSTARTS(STR(?entidadGrado2), "http://www.wikidata.org/entity/"))
 }
 ORDER BY ?dimension ?propiedadGrado1
-LIMIT 50"""
+LIMIT 100"""
 
 
 def get_results(endpoint_url, query):
