@@ -8,7 +8,6 @@ Created on Tue Aug 19 15:18:15 2025
 import sys
 import json
 import os
-from datetime import datetime
 from SPARQLWrapper import SPARQLWrapper, JSON
 
 endpoint_url = "https://query.wikidata.org/sparql"
@@ -52,7 +51,7 @@ WHERE {
   FILTER(STRSTARTS(STR(?entidadGrado2), "http://www.wikidata.org/entity/"))
 }
 ORDER BY ?dimension ?propiedadGrado1
-LIMIT 100"""
+LIMIT 1000"""
 
 
 def get_results(endpoint_url, query):
@@ -70,7 +69,6 @@ results = get_results(endpoint_url, query)
 output_data = {
     "metadata": {
         "query_executed": query,
-        "execution_date": datetime.now().isoformat(),
         "endpoint": endpoint_url,
         "total_results": len(results["results"]["bindings"])
     },
@@ -96,8 +94,7 @@ for result in results["results"]["bindings"]:
 # Crear directorio si no existe
 os.makedirs("resultados_queries", exist_ok=True)
 
-timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-filename = os.path.join("resultados_queries", f"qoyllur_riti_grado2_{timestamp}.json")
+filename = os.path.join("resultados_queries", "qoyllur_riti_grado2.json")
 
 with open(filename, 'w', encoding='utf-8') as f:
     json.dump(output_data, f, ensure_ascii=False, indent=2)
