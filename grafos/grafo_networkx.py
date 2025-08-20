@@ -85,7 +85,7 @@ def visualize_and_save_graph(G):
         plt.figure(figsize=(16, 14))
         
         # Layout para mejor visualización
-        pos = nx.spring_layout(G, k=2, iterations=50)
+        pos = nx.kamada_kawai_layout(G)
         
         # Colores por tipo de nodo
         node_colors = []
