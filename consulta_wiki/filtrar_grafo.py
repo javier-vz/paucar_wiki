@@ -1,7 +1,7 @@
 import json
 
 # 1. Cargar el JSON crudo descargado de Wikidata
-archivo_entrada = '02_conexiones_geograficas_RAW.json'
+archivo_entrada = '04_tipos_entidades_RAW.json'
 with open(archivo_entrada, 'r', encoding='utf-8') as f:
     datos_completos = json.load(f)
 
@@ -63,7 +63,7 @@ resultado_filtrado = {
     "results": {"bindings": datos_filtrados}
 }
 
-archivo_salida = '02_conexiones_geograficas_FILTRADO.json'
+archivo_salida = '04_tipos_entidades_RAW_FILTRADO.json'
 with open(archivo_salida, 'w', encoding='utf-8') as f:
     json.dump(resultado_filtrado, f, ensure_ascii=False, indent=2)
 
